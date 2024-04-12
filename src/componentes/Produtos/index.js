@@ -15,7 +15,7 @@ const ProdutosContainer = styled.section`
     justify-content:center;
     align-items: center; 
     background:#FFFFFF;
-    margin: 80px 80px 80px;
+    margin: 80px 200px 80px;
 
 `
 
