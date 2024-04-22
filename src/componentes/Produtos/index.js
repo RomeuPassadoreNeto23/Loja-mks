@@ -20,6 +20,8 @@ const ProdutosContainer = styled.section`
 `
 
 
+
+
 function Products() {
     const [produtos, setProdutos] = useState([])
     const [removeLoad, setRemoveLoad] = useState(false)
@@ -31,7 +33,7 @@ function Products() {
                 fetchProduto()
                 setRemoveLoad(true)
 
-            }, 3000
+            }, 30
         )
 
 
@@ -62,7 +64,7 @@ function Products() {
                 key={produto.id}
                 img={produto.photo} />
             ))}
-            {!removeLoad&& <Loading/>}
+            {!removeLoad && <Loading/>}
         </ProdutosContainer>
 
 

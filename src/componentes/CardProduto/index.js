@@ -39,14 +39,12 @@ const CardName = styled.p`
     font-weight:400;
 
 `
-const CardProc = styled.p`
+const CardPreco = styled.p`
     width: 70px; 
     display: flex;
     height:26px;
-    font-weight:700;
-    font-size: 12px;
-    color: #FFFFFF;
-    text-align:center;
+    align-items: center;
+    justify-content:center;
     max-width:70px;
     max-height:26px;
     border-radius: 5px;
@@ -54,6 +52,17 @@ const CardProc = styled.p`
 
 
 `
+const CardPrecoConteudo = styled.a`
+    display: flex;
+    font-weight:700;
+    font-size: 8px;
+    color: #FFFFFF;
+    width:50px; 
+    height:10px;
+    max-width:50px;
+    max-height:10px;
+    
+    `
 const CardTexto = styled.p`
     width:192px;
     color:#2C2C2C;
@@ -88,7 +97,7 @@ function CardProduto({key,img,nome,text,proc}){
         <Card key={key}>
             <CardImg src={img}></CardImg>
             <div style={{display:'flex'}}>
-                <CardName>{nome}</CardName> <CardProc>{`R$${proc}`}</CardProc>
+                <CardName>{nome}</CardName><CardPreco><CardPrecoConteudo>{`R$${proc}`}</CardPrecoConteudo></CardPreco>
             </div>
             <CardTexto>{text}</CardTexto>
             <CardButton><Imgbutton src={sacola} />Comprar</CardButton>
