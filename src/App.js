@@ -2,6 +2,7 @@ import Header from './componentes/Header';
 import Footer from './componentes/Footer/index';
 import styled from 'styled-components';
 import Products from './componentes/Produtos'
+import { ModalProvider } from "styled-react-modal";
 const AppContainer = styled.div`
       width:100%;
       height:100%;
@@ -12,11 +13,13 @@ const AppContainer = styled.div`
 
 function App() {
   return (
-    <AppContainer>
-      <Header />
-      <Products />
-      <Footer />
-    </AppContainer>
+    <ModalProvider>
+      <AppContainer>
+        <Header />
+        <Products />
+        <Footer />
+      </AppContainer>
+    </ModalProvider>
   );
 }
 

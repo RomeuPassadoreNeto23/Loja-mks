@@ -92,9 +92,10 @@ const CardButton = styled.button`
 `
 
 
-function CardProduto({key,img,nome,text,proc}){
+function CardProduto({img,nome,text,proc}){
     return(
-        <Card key={key}>
+        <>
+        <Card >
             <CardImg src={img}></CardImg>
             <div style={{display:'flex'}}>
                 <CardName>{nome}</CardName><CardPreco><CardPrecoConteudo>{`R$${proc}`}</CardPrecoConteudo></CardPreco>
@@ -102,6 +103,7 @@ function CardProduto({key,img,nome,text,proc}){
             <CardTexto>{text}</CardTexto>
             <CardButton><Imgbutton src={sacola} />Comprar</CardButton>
         </Card>
+        </>
     )
 }
 export default CardProduto

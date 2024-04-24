@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import Logo from '../Logo';
 import Carrinho from '../../imagens/carrinho.png'
+import ModalCarrinho from '../ModalCarrinho';
+import { useState } from 'react';
+import Modal from 'styled-react-modal'
 const HeaderContainer = styled.div` 
     width:100%;
     height:101px;
@@ -11,6 +14,9 @@ const HeaderContainer = styled.div`
     
 
 `
+
+
+
 const CarrinhoButton = styled.button`
     border-radius: 8px;
     font-weight:700;
@@ -34,11 +40,21 @@ const CarrinhoImg = styled.img`
 `
 
 function Header() {
+    const [abri, setAbri] = useState(false)
 
+     function abrindoModal( e ) {
+        setAbri(! abri)
+     }
+     console.log(abri,"abindo modal")
     return (
         <HeaderContainer>
+            <ModalCarrinho
+                abrindo={abri}
+                onBackgroundClick = { abrindoModal } 
+                onEscapeKeydown = { abrindoModal } 
+            />
             <Logo />
-            <CarrinhoButton ><CarrinhoImg src={Carrinho}/>0</CarrinhoButton>
+            <CarrinhoButton onClick={abrindoModal}><CarrinhoImg  src={Carrinho}/>0</CarrinhoButton>
         </HeaderContainer>
     )
 

@@ -1,15 +1,14 @@
 import Modal from "styled-react-modal";
-import { ModalProvider } from "styled-react-modal";
+
 import styled from "styled-components";
 
 const ModalEstilo = Modal.styled` 
-        width:500px; 
-        height:1000px;
-        background:#0F52BA;
-        padding:100%;
-        display:flex;
-        justify-content:space-around;
-        flex-direction: column;
+        width: 20rem;
+        height: 20rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color:#000000;
         `
 const ButtonFecharModal = styled.button`
         width:90px;    
@@ -18,14 +17,15 @@ const ButtonFecharModal = styled.button`
         justify-content:center;
 
         `
-const CarrinhoTexto =styled.p``
+const CarrinhoTexto = styled.p``
 
-function ModalCarrinho({nomeProduto,precoProdoto,quatidaProduto}) {
-   return(
-    <ModalProvider>
-        <ModalEstilo>
-
-        </ModalEstilo>
-    </ModalProvider>
-   ) 
+function ModalCarrinho({abrindo}) {
+        return (
+                <div>
+                        <ModalEstilo isOpen={abrindo}>
+                    
+                        </ModalEstilo>
+                </div>
+        )
 }
+export default ModalCarrinho

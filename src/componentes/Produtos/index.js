@@ -5,6 +5,7 @@ import CardProduto from '../CardProduto';
 import Loading from '../Loading';
 import { getProduto } from '../Api/produto';
 
+
 const ProdutosContainer = styled.section` 
     max-width: 938px;
     max-height 601px;
@@ -26,6 +27,7 @@ function Products() {
     const [produtos, setProdutos] = useState([])
     const [removeLoad, setRemoveLoad] = useState(false)
 
+
     useEffect(() => {
         setTimeout(
             () => {
@@ -33,7 +35,7 @@ function Products() {
                 fetchProduto()
                 setRemoveLoad(true)
 
-            }, 30
+            }, 300
         )
 
 
@@ -43,8 +45,6 @@ function Products() {
 
     async function fetchProduto() {
         const produtodata = await getProduto()
-
-        console.log(produtodata, "res")
         setProdutos(produtodata.products)
 
     }
@@ -56,15 +56,17 @@ function Products() {
         <ProdutosContainer>
 
             {produtos && produtos.map(produto => (
-
-                <CardProduto 
-                text="Redesigned from scratch and completely revised."
-                proc={produto.price}  
-                nome={produto.name} 
-                key={produto.id}
-                img={produto.photo} />
+                
+                    <CardProduto
+                        key={produto.id}
+                        text="Redesigned from scratch and completely revised."
+                        proc={produto.price}
+                        nome={produto.name} 
+                        img={produto.photo} />
+                
             ))}
-            {!removeLoad && <Loading/>}
+            {!removeLoad && <Loading />}
+
         </ProdutosContainer>
 
 
