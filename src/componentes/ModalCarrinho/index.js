@@ -6,9 +6,9 @@ const ModalEstilo = Modal.styled`
         width: 20rem;
         height: 20rem;
         display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color:#000000;
+        align-items:flex-end;
+        justify-content:flex-end;
+        background-color:#0F52BA;
         `
 const ButtonFecharModal = styled.button`
         width:90px;    
@@ -19,10 +19,13 @@ const ButtonFecharModal = styled.button`
         `
 const CarrinhoTexto = styled.p``
 
-function ModalCarrinho({abrindo}) {
+function ModalCarrinho({abrindo,fechadoModalClicandoFora}) {
         return (
-                <div>
-                        <ModalEstilo isOpen={abrindo}>
+                <div >
+                        <ModalEstilo 
+                        isOpen = {abrindo}
+                        onBackgroundClick = {fechadoModalClicandoFora}
+                        >
                     
                         </ModalEstilo>
                 </div>

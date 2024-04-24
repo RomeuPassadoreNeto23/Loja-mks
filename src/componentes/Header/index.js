@@ -3,7 +3,7 @@ import Logo from '../Logo';
 import Carrinho from '../../imagens/carrinho.png'
 import ModalCarrinho from '../ModalCarrinho';
 import { useState } from 'react';
-import Modal from 'styled-react-modal'
+
 const HeaderContainer = styled.div` 
     width:100%;
     height:101px;
@@ -14,7 +14,6 @@ const HeaderContainer = styled.div`
     
 
 `
-
 
 
 const CarrinhoButton = styled.button`
@@ -49,9 +48,9 @@ function Header() {
     return (
         <HeaderContainer>
             <ModalCarrinho
-                abrindo={abri}
-                onBackgroundClick = { abrindoModal } 
-                onEscapeKeydown = { abrindoModal } 
+                abrindo = {abri}
+                fechadoModalClicandoFora = { abrindoModal } 
+                fechadoModalClicandoDentro = { abrindoModal } 
             />
             <Logo />
             <CarrinhoButton onClick={abrindoModal}><CarrinhoImg  src={Carrinho}/>0</CarrinhoButton>

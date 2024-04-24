@@ -9,11 +9,22 @@ const AppContainer = styled.div`
       background:#FFFFFF;
 
 `
-
+const FundoModal = styled.div`
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  justify-content:flex-end;
+  z-index: 30;
+  opacity:default;
+  
+`
 
 function App() {
   return (
-    <ModalProvider>
+    <ModalProvider backgroundComponent={FundoModal}>
       <AppContainer>
         <Header />
         <Products />
