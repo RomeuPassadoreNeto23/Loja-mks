@@ -4,9 +4,13 @@ import styled from 'styled-components';
 import Products from './componentes/Produtos'
 import { ModalProvider } from "styled-react-modal";
 const AppContainer = styled.div`
-      width:100%;
-      height:100%;
+      width: 100vw;
+      height: 100vh;
       background:#FFFFFF;
+      max-width:1440px;
+      max-height:1024px;
+     
+      
 
 `
 const FundoModal = styled.div`
@@ -20,6 +24,7 @@ const FundoModal = styled.div`
   z-index: 30;
   opacity:default;
   
+  
 `
 
 function App() {
@@ -30,7 +35,8 @@ function App() {
         <Products />
         <Footer />
       </AppContainer>
-    </ModalProvider>
+      </ModalProvider>
+
   );
 }
 

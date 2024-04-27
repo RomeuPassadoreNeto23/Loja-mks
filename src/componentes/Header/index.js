@@ -5,10 +5,11 @@ import ModalCarrinho from '../ModalCarrinho';
 import { useState } from 'react';
 
 const HeaderContainer = styled.div` 
-    width:100%;
+    width:100vw;
     height:101px;
     display: flex;
-    justify-content: space-evenly;
+    max-height:101px;
+    justify-content:  space-around;
     align-items: center; 
     background:#0F52BA;
     
@@ -18,6 +19,9 @@ const HeaderContainer = styled.div`
 
 const CarrinhoButton = styled.button`
     border-radius: 8px;
+    position: relative;
+    left:100px;
+    border: none;
     font-weight:700;
     font-size:18px;
     width:90px;
@@ -41,18 +45,23 @@ const CarrinhoImg = styled.img`
 function Header() {
     const [abri, setAbri] = useState(false)
 
-     function abrindoModal( e ) {
+     function abrindoModal() {
         setAbri(! abri)
+        localStorage.setItem("chave",abri)
+    
      }
      console.log(abri,"abindo modal")
+     
+
+    
     return (
         <HeaderContainer>
+            <Logo />
             <ModalCarrinho
                 abrindo = {abri}
                 fechadoModalClicandoFora = { abrindoModal } 
                 fechadoModalClicandoDentro = { abrindoModal } 
             />
-            <Logo />
             <CarrinhoButton onClick={abrindoModal}><CarrinhoImg  src={Carrinho}/>0</CarrinhoButton>
         </HeaderContainer>
     )

@@ -6,6 +6,7 @@ import Loading from '../Loading';
 import { getProduto } from '../Api/produto';
 
 
+
 const ProdutosContainer = styled.section` 
     max-width: 938px;
     max-height 601px;
@@ -48,12 +49,13 @@ function Products() {
         setProdutos(produtodata.products)
 
     }
-
-
+       
+  
     return (
 
 
         <ProdutosContainer>
+          
 
             {produtos && produtos.map(produto => (
                 

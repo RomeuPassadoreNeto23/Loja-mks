@@ -2,10 +2,14 @@ import styled from 'styled-components';
 import logo from '../../imagens/logo.png'
 const LogoContainer = styled.div`
         display: flex;
+        align-items: center;
+        position: relative;
+        right: 100px;
+       
         
     `   
 const LogoTexto = styled.p`
-    
+    margin: 100px 0px 70px;
     width:200px;
     height:44px;
     font-weight:300;
