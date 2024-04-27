@@ -13,7 +13,7 @@ const AppContainer = styled.div`
       
 
 `
-const FundoModal = styled.div`
+const ModalContainer = styled.div`
   display: flex;
   position: fixed;
   top: 0;
@@ -29,13 +29,14 @@ const FundoModal = styled.div`
 
 function App() {
   return (
-    <ModalProvider backgroundComponent={FundoModal}>
+    
       <AppContainer>
+        <ModalProvider backgroundComponent={ModalContainer}>
         <Header />
         <Products />
         <Footer />
+        </ModalProvider>
       </AppContainer>
-      </ModalProvider>
 
   );
 }
