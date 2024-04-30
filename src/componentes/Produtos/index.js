@@ -27,7 +27,7 @@ const ProdutosContainer = styled.section`
 function Products() {
     const [produtos, setProdutos] = useState([])
     const [removeLoad, setRemoveLoad] = useState(false)
-
+    
 
     useEffect(() => {
         setTimeout(
@@ -60,9 +60,10 @@ function Products() {
             {produtos && produtos.map(produto => (
                 
                     <CardProduto
+                        id={produto.id}
                         key={produto.id}
                         text="Redesigned from scratch and completely revised."
-                        proc={produto.price}
+                        preco={produto.price}
                         nome={produto.name} 
                         img={produto.photo} />
                 

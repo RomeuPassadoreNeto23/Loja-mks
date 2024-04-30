@@ -1,8 +1,11 @@
 import Header from './componentes/Header';
 import Footer from './componentes/Footer/index';
+import React from 'react';
 import styled from 'styled-components';
+import Provider from './context/Provider';
 import Products from './componentes/Produtos'
 import { ModalProvider } from "styled-react-modal";
+import ModalCarrinho from './componentes/ModalCarrinho';
 const AppContainer = styled.div`
       width: 100vw;
       height: 100vh;
@@ -29,15 +32,12 @@ const ModalContainer = styled.div`
 
 function App() {
   return (
-    
-      <AppContainer>
-        <ModalProvider backgroundComponent={ModalContainer}>
+      <Provider>
         <Header />
         <Products />
         <Footer />
-        </ModalProvider>
-      </AppContainer>
-
+        <ModalCarrinho />
+      </Provider>
   );
 }
 

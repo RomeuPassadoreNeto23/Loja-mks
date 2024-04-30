@@ -57,11 +57,6 @@ function Header() {
     return (
         <HeaderContainer>
             <Logo />
-            <ModalCarrinho
-                abrindo = {abri}
-                fechadoModalClicandoFora = { abrindoModal } 
-                fechadoModalClicandoDentro = { abrindoModal } 
-            />
             <CarrinhoButton onClick={abrindoModal}><CarrinhoImg  src={Carrinho}/>0</CarrinhoButton>
         </HeaderContainer>
     )

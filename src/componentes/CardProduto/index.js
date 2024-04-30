@@ -1,5 +1,9 @@
 import styled from "styled-components"
 import sacola from "../../imagens/sacola.png"
+import React, { useContext } from 'react';
+import AppContext from '../../context/AppContext';
+
+import propTypes from 'prop-types';
 
 const Card = styled.div`
     align-items: center;
@@ -92,17 +96,41 @@ const CardButton = styled.button`
 `
 
 
-function CardProduto({img,nome,text,proc}){
-    return(
+function CardProduto({ id, img, nome, text, preco }) {
+
+
+    let quatidade = 1
+    const { cartItems, setCartItems, } = useContext(AppContext);
+    const data = { id, img, nome, preco, quatidade }
+    const handleAddCart = () => {
+        const updatedItems = cartItems.filter((item) => item.id === id)
+
+       
+        if (updatedItems.length > 0) {
+            updatedItems.filter((item) => item.quatidade += 1)
+            setCartItems([...cartItems]);
+
+
+
+        } else {
+            setCartItems([...cartItems, data]);
+
+        }
+
+
+    }
+
+
+    return (
         <>
-        <Card >
-            <CardImg src={img}></CardImg>
-            <div style={{display:'flex'}}>
-                <CardName>{nome}</CardName><CardPreco><CardPrecoConteudo>{`R$${proc}`}</CardPrecoConteudo></CardPreco>
-            </div>
-            <CardTexto>{text}</CardTexto>
-            <CardButton><Imgbutton src={sacola} />Comprar</CardButton>
-        </Card>
+            <Card key={id} >
+                <CardImg src={img}></CardImg>
+                <div style={{ display: 'flex' }}>
+                    <CardName>{nome}</CardName><CardPreco><CardPrecoConteudo>{`R$${preco}`}</CardPrecoConteudo></CardPreco>
+                </div>
+                <CardTexto>{text}</CardTexto>
+                <CardButton onClick={handleAddCart}><Imgbutton src={sacola} />Comprar</CardButton>
+            </Card>
         </>
     )
 }
