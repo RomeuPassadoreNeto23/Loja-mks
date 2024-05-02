@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import Logo from '../Logo';
 import Carrinho from '../../imagens/carrinho.png'
-import ModalCarrinho from '../ModalCarrinho';
-import { useState } from 'react';
+import React, { useContext } from 'react';
+import AppContext from '../../context/AppContext';
+
 
 const HeaderContainer = styled.div` 
     width:100vw;
@@ -43,21 +44,16 @@ const CarrinhoImg = styled.img`
 `
 
 function Header() {
-    const [abri, setAbri] = useState(false)
+    const { cartItems, isCartVisible, setIsCartVisible } = useContext(AppContext);
 
-     function abrindoModal() {
-        setAbri(! abri)
-        localStorage.setItem("chave",abri)
-    
-     }
-     console.log(abri,"abindo modal")
+     
      
 
     
     return (
         <HeaderContainer>
             <Logo />
-            <CarrinhoButton onClick={abrindoModal}><CarrinhoImg  src={Carrinho}/>0</CarrinhoButton>
+            <CarrinhoButton onClick={() => setIsCartVisible(!isCartVisible)}><CarrinhoImg  src={Carrinho}/>{cartItems.length}</CarrinhoButton>
         </HeaderContainer>
     )
 

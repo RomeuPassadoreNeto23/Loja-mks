@@ -1,4 +1,3 @@
-import Modal from "styled-react-modal";
 import React, { useContext } from 'react';
 import AppContext from '../../context/AppContext';
 import CardCarrinho from "../CardCarrinho";
@@ -52,6 +51,11 @@ const ModalContainer = styled.section`
          max-height: 1024px;
          top: 0;
          right: 0;
+         transform: translate(110%, 0);
+         transition: all 400ms ease;
+         &.cart--active {
+                transform: translate(0, 0);
+              }
          
 `
 const CarrinhoLista = styled.section`
@@ -95,14 +99,14 @@ const CarrinhoTitulo = styled.p`
 
 
 function ModalCarrinho() {
-        const { cartItems, isCartVisible } = useContext(AppContext);
+        const { cartItems, isCartVisible,setIsCartVisible } = useContext(AppContext);
 
         console.log(cartItems, "cartcartItems")
         return (
-                <ModalContainer hidden={isCartVisible}>
+                <ModalContainer className={`cart ${isCartVisible ? 'cart--active' : ''}`}>
                         <MenuCarrinho>
                                 <CarrinhoTitulo>Carrinho<br />de compras</CarrinhoTitulo>
-                                <ButtonFecharModal onClick='' >X</ButtonFecharModal>
+                                <ButtonFecharModal onClick={() => setIsCartVisible(!isCartVisible)} >X</ButtonFecharModal>
                         </MenuCarrinho>
                         <CarrinhoLista>
                                 {cartItems && cartItems.map(produto => (
@@ -115,21 +119,3 @@ function ModalCarrinho() {
 }
 export default ModalCarrinho
 
-{/* <div >
-                        <ModalContainer
-                                isOpen={abrindo}
-                                onBackgroundClick={fechadoModalClicandoFora}
-                        >
-                                <MenuCarrinho>
-                                        <CarrinhoTitulo>Carrinho<br />de compras</CarrinhoTitulo>
-                                        <ButtonFecharModal onClick={fechadoModalClicandoFora} >X</ButtonFecharModal>
-                                </MenuCarrinho>
-                                <CarrinhoLista>
-                                        <p>oooooooooo</p>
-                                        <p>ooooooooo</p>
-                                        <p>ooooooooo</p>
-                                        <p>ooooooooo</p>
-                                </CarrinhoLista>
-
-                        </ModalContainer>
-                </div> */}
