@@ -36,7 +36,7 @@ function Products() {
                 fetchProduto()
                 setRemoveLoad(true)
 
-            }, 300
+            }, 3000
         )
 
 

@@ -3,7 +3,7 @@ import sacola from "../../imagens/sacola.png"
 import React, { useContext } from 'react';
 import AppContext from '../../context/AppContext';
 
-import propTypes from 'prop-types';
+
 
 const Card = styled.div`
     align-items: center;
@@ -102,14 +102,13 @@ function CardProduto({ id, img, nome, text, preco }) {
     let quatidade = 1
     const { cartItems, setCartItems, } = useContext(AppContext);
     const data = { id, img, nome, preco, quatidade }
-    const handleAddCart = () => {
-        const updatedItems = cartItems.filter((item) => item.id === id)
+    const AddCartProduto = () => {
+        const listaAddQuantidade = cartItems.filter((item) => item.id === id)
 
-       
-        if (updatedItems.length > 0) {
-            updatedItems.filter((item) => item.quatidade += 1)
-            setCartItems([...cartItems]);
 
+        if (listaAddQuantidade.length > 0) {
+            listaAddQuantidade.filter((item) => item.quatidade += 1)
+            setCartItems([...cartItems])
 
 
         } else {
@@ -129,7 +128,7 @@ function CardProduto({ id, img, nome, text, preco }) {
                     <CardName>{nome}</CardName><CardPreco><CardPrecoConteudo>{`R$${preco}`}</CardPrecoConteudo></CardPreco>
                 </div>
                 <CardTexto>{text}</CardTexto>
-                <CardButton onClick={handleAddCart}><Imgbutton src={sacola} />Comprar</CardButton>
+                <CardButton onClick={AddCartProduto}><Imgbutton src={sacola} />Comprar</CardButton>
             </Card>
         </>
     )

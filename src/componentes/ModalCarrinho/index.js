@@ -61,7 +61,7 @@ const ModalContainer = styled.section`
 const CarrinhoLista = styled.section`
         display: flex;
         align-items:center;
-        justify-content:center;
+        justify-content:flex-start;
         flex-direction: column;
         width:486px;
         

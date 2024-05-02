@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React, { useContext } from 'react';
 import propTypes from 'prop-types';
+import AppContext from '../../context/AppContext';
 
 const CarrinhoCard = styled.div`
       width:379px;
@@ -24,7 +25,7 @@ const ButtonQuantida = styled.button`
     align-items: center;
     display:flex;
     border-radius: 4px;
-    border: 0px, 0px, 0px, 0px;
+    border: 0px;
     border-block-color:#BFBFBF;
      
 `
@@ -32,8 +33,11 @@ const ButtonQuantidaMais = styled.p`
     width:5px;
     color:#000000;
     height:10px;
-    font-size: 8px;
+    font-size: 15px;
+    bottom: 4px;
     font-weight:400;
+    position: relative;
+    left: 8px;
 
 
 `
@@ -41,15 +45,19 @@ const ButtonQuantidaMenos = styled.p`
     width:5px;
     color:#000000;
     height:15px;
-    font-size:12px;
+    position: relative;
+    bottom: 5px;
+    font-size:20px;
     font-weight:400;
 
 
 `
 const ButtonQuantidaNumero = styled.p`
-    width:5px;
+    width:25px;
     color:#000000;
     height:10px;
+    position: relative;
+    left: 5px;
     font-size: 8px;
     font-weight:400;
 
@@ -75,6 +83,9 @@ const ProdutoQtd = styled.p`
     color:#000000;
     height:6px;
     font-size:5px;
+    position: relative;
+    bottom: 12px;
+    right: 30px;
     font-weight:400;
 
 
@@ -100,6 +111,9 @@ const ButtonRemover = styled.button`
     font-weight:400;
     border-radius:100%;
     background-color:#000000;
+    position: relative;
+    bottom: 45px;
+    left: 19px;
     
 
 `
@@ -107,22 +121,56 @@ const ButtonRemover = styled.button`
 
 
 
+function CardCarrinho({ data }) {
+    const { cartItems, setCartItems, } = useContext(AppContext);
+    const { id, img, nome, preco, quatidade } = data
 
-function CardCarrinho({data}) {
-    const  {id,img,nome,preco,quatidade} = data 
-    return(
+    const AddQuantidade = () => {
+        const listaAddQuantidade = cartItems.filter((item) => item.id === id)
+        listaAddQuantidade.filter((item) => item.quatidade += 1)
+        setCartItems([...cartItems])
+
+
+    }
+    const MenosQuantidade = () => {
+        const listaMenosQuantidade = cartItems.filter((item) => item.id === id)
+        const verificaQuantidade = cartItems.filter((item) => item.id === id && item.quatidade <= 1)
+       
+
+        
+        if(verificaQuantidade.length > 0){
+            listaMenosQuantidade.filter((item) => item.quatidade += 0)
+            setCartItems([...cartItems])
+
+        }else{
+
+            listaMenosQuantidade.filter((item) => item.quatidade -= 1)
+             setCartItems([...cartItems])
+
+        }
+       
+
+    }
+    const RemoverItem = () => {
+        const updatedItems = cartItems.filter((item) => item.id !== id);
+        setCartItems(updatedItems);
+ 
+    }
+
+
+    return (
         <>
-        <CarrinhoCard key={id} >
-         <CardImg src={img}/> 
-         <NomeProduto>{nome}</NomeProduto>
-         <ButtonQuantida><ButtonQuantidaMenos>-</ButtonQuantidaMenos><ButtonQuantidaNumero>{`|${quatidade}|`}</ButtonQuantidaNumero><ButtonQuantidaMais>+</ButtonQuantidaMais></ButtonQuantida>
-         <PercoProduto>{`$${preco}`}</PercoProduto>
-         <ButtonRemover>x</ButtonRemover>
-        </CarrinhoCard>
+            <CarrinhoCard key={id} >
+                <CardImg src={img} />
+                <NomeProduto>{nome}</NomeProduto>
+                <ButtonQuantida><ButtonQuantidaMenos onClick={MenosQuantidade}>-</ButtonQuantidaMenos><ButtonQuantidaNumero>{`| ${quatidade} |`}</ButtonQuantidaNumero><ButtonQuantidaMais onClick={AddQuantidade}>+</ButtonQuantidaMais><ProdutoQtd>qtd</ProdutoQtd></ButtonQuantida>
+                <PercoProduto>{`$${preco}`}</PercoProduto>
+                <ButtonRemover onClick={RemoverItem}>x</ButtonRemover>
+            </CarrinhoCard>
         </>
     )
 }
 export default CardCarrinho
 CardCarrinho.propTypes = {
     data: propTypes.object
-  }.isRequired;
+}.isRequired;
