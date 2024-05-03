@@ -76,15 +76,35 @@ const TotalContainer = styled.div`
 `
 const BtnfContainer = styled.div`
         display: flex;
+        justify-content:flex-end;
         align-items:center;
         width: 486px;
+       
 
+`
+const BtnfinalizarComprar = styled.button`
+      display: flex;
+      align-items:center;
+      width: 486px;
+      color:#FFFFFF;
+      background-color:#000000;
+      font-weight:700;
+      font-size:27px;
+      justify-content: center;
+      box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+      height:100px;
+      &:hover {
+        cursor: pointer;
+    }
+
+
+      
 `
 
 
 function ModalCarrinho() {
-        const { cartItems, isCartVisible,setIsCartVisible } = useContext(AppContext);
-        const total =  cartItems.reduce((acc, item) => item.quatidade * item.preco + acc, 0)
+        const { cartItems, isCartVisible, setIsCartVisible, setCartItems } = useContext(AppContext);
+        const total = cartItems.reduce((acc, item) => item.quatidade * item.preco + acc, 0)
         console.log(cartItems, "cartcartItems")
         return (
                 <ModalContainer className={`cart ${isCartVisible ? 'cart--active' : ''}`}>
@@ -100,6 +120,9 @@ function ModalCarrinho() {
                         <TotalContainer>
                                 <CarrinhoTitulo>{`Total: ${formatCurrency(total, 'BRL')}`}</CarrinhoTitulo>
                         </TotalContainer>
+                        <BtnfContainer>
+                                <BtnfinalizarComprar onClick={() => setCartItems([])}>FINALIZAR COMPRAR</BtnfinalizarComprar>
+                        </BtnfContainer>
 
                 </ModalContainer>
         )
