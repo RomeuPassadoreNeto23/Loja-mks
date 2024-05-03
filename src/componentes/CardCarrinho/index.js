@@ -38,6 +38,9 @@ const ButtonQuantidaMais = styled.p`
     font-weight:400;
     position: relative;
     left: 8px;
+    &:hover {
+        cursor: pointer;
+    }
 
 
 `
@@ -49,6 +52,9 @@ const ButtonQuantidaMenos = styled.p`
     bottom: 5px;
     font-size:20px;
     font-weight:400;
+    &:hover {
+        cursor: pointer;
+    }
 
 
 `
@@ -114,6 +120,9 @@ const ButtonRemover = styled.button`
     position: relative;
     bottom: 45px;
     left: 19px;
+    &:hover {
+        cursor: pointer;
+    }
     
 
 `
