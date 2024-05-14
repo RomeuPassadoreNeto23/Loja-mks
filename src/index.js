@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
       body {
@@ -20,7 +21,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <GlobalStyle />
-    <App />
+    <BrowserRouter>
+    <Routes>
+      <Route  path='/' element={<App />} />
+    </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

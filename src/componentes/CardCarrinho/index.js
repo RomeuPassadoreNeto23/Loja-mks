@@ -6,6 +6,7 @@ import AppContext from '../../context/AppContext';
 const CarrinhoCard = styled.div`
       width:379px;
       height:95px;
+      min-height: 95px;
       max-width:379px;
       max-height:95px;
       justify-content:space-evenly;
