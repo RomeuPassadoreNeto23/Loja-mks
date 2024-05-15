@@ -18,6 +18,8 @@ const ProdutosContainer = styled.section`
     align-items: center; 
     background:#FFFFFF;
     margin: 80px 200px 80px;
+    position: relative;
+    left: 100px;
 
 `
 
