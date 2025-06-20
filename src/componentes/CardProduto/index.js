@@ -13,7 +13,7 @@ const Card = styled.div`
     display: flex;
     margin: 0 auto;
     max-width:218px;
-    max-height:285px
+    max-height:285px;
     justify-content: space-around;
     flex-direction: column;
     width: 218px;

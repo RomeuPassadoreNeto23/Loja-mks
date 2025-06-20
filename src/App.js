@@ -14,8 +14,8 @@ function App() {
       <Provider>
         <Header />
         <Products />
-        <Footer />
         <ModalCarrinho />
+         <Footer />
       </Provider>
   );
 }

@@ -8,9 +8,7 @@ import { getProduto } from '../Api/produto';
 
 
 const ProdutosContainer = styled.section` 
-    max-width: 938px;
     max-height 601px;
-    width:938px; 
     height:601px;
     display: flex;
     flex-wrap:wrap;
@@ -48,7 +46,8 @@ function Products() {
 
     async function fetchProduto() {
         const produtodata = await getProduto()
-        setProdutos(produtodata.products)
+        console.log(produtodata,"api get")
+        setProdutos(produtodata)
 
     }
        
@@ -64,7 +63,7 @@ function Products() {
                     <CardProduto
                         id={produto.id}
                         key={produto.id}
-                        text="Redesigned from scratch and completely revised."
+                        text={produto.descricao}
                         preco={produto.price}
                         nome={produto.name} 
                         img={produto.photo} />
